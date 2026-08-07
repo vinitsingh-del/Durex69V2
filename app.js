@@ -53,6 +53,15 @@
     window.setTimeout(() => modal.classList.add('is-open'), 1450);
   };
 
+  const setupStickyCategories = () => {
+    const nav = document.querySelector('.category-nav');
+    if (!nav || nav.querySelector('a[href="#bestsellers"]')) return;
+    const bestsellers = document.createElement('a');
+    bestsellers.href = '#bestsellers';
+    bestsellers.innerHTML = '<img src="/Durex69V2/assets/live-range/extra-time-ultra-thin-10-stable.webp" alt=""><span><b>Bestsellers</b><small>Top-rated sale picks.</small></span><i>→</i>';
+    nav.prepend(bestsellers);
+  };
+
   const setupBagMaker = () => {
     const products = [
       { name: 'Extra Time Ultra Thin', price: 349, image: '/Durex69V2/assets/live-range/extra-time-ultra-thin-10-stable.webp' },
@@ -179,6 +188,7 @@
   setupHero();
   setupSaleRail();
   setupFeaturedMassagers();
+  setupStickyCategories();
   setupParisContest();
   setupBagMaker();
 })();

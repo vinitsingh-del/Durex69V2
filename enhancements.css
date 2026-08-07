@@ -231,21 +231,21 @@
 
 /* Purple campaign atmosphere replaces the previous green cast. */
 :root {
-  --forest: #3f176a;
-  --green: #c6a3ff;
-  --muted: #c6a3ff;
+  --forest: #071b3b;
+  --green: #72dcde;
+  --muted: #9db3cc;
 }
 
 html {
-  background: #24104d;
+  background: #06162f;
 }
 
 body {
-  background: radial-gradient(circle at 82% 8%, rgba(111, 44, 145, 0.34), transparent 31%), linear-gradient(180deg, #1d174f 0%, #005baa 15%, #173f8a 68%, #35115f 100%);
+  background: radial-gradient(circle at 82% 8%, rgba(39, 189, 190, 0.18), transparent 30%), linear-gradient(180deg, #08152f 0%, #005baa 16%, #123d78 66%, #071b3b 100%);
 }
 
 .bag-builder-scrim {
-  background: linear-gradient(90deg, rgba(35, 12, 70, 0.96), rgba(74, 28, 113, 0.72) 38%, rgba(0, 91, 170, 0.12) 70%, rgba(39, 13, 77, 0.74));
+  background: linear-gradient(90deg, rgba(4, 18, 43, 0.97), rgba(0, 58, 117, 0.74) 38%, rgba(0, 91, 170, 0.12) 70%, rgba(4, 26, 57, 0.8));
 }
 
 /* Compact sticky category navigation. */
@@ -253,32 +253,44 @@ body {
   z-index: 35;
   position: sticky;
   top: 10px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 6px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 5px;
   margin-top: 20px;
-  padding: 6px;
-  border: 1px solid rgba(198, 163, 255, 0.3);
-  border-radius: 15px;
-  background: rgba(25, 15, 65, 0.92);
+  padding: 5px;
+  border: 1px solid rgba(141, 205, 255, 0.28);
+  border-radius: 13px;
+  background: rgba(5, 27, 60, 0.94);
   box-shadow: 0 14px 34px rgba(8, 3, 28, 0.34), inset 0 1px rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px) saturate(1.2);
 }
 
 .category-nav a {
-  grid-template-columns: 1fr auto;
-  min-height: 44px;
-  padding: 0 14px;
-  border-radius: 10px;
-  background: rgba(111, 44, 145, 0.18);
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  gap: 7px;
+  min-height: 46px;
+  padding: 5px 8px;
+  border-radius: 9px;
+  background: rgba(0, 91, 170, 0.2);
 }
 
-.category-nav img,
 .category-nav small {
   display: none;
 }
 
+.category-nav img {
+  display: block;
+  object-fit: cover;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border-radius: 7px;
+  background: #fff3de;
+}
+
+.category-nav b { font-size: 11px; }
+
 .category-nav a:hover {
-  background: rgba(111, 44, 145, 0.42);
+  background: rgba(0, 91, 170, 0.46);
   transform: none;
 }
 
@@ -291,7 +303,7 @@ body {
   padding: 5px 8px;
   border: 1px solid rgba(242, 190, 78, 0.24);
   border-radius: 8px;
-  background: rgba(111, 44, 145, 0.18);
+  background: rgba(0, 62, 126, 0.28);
   box-shadow: inset 0 0 12px rgba(242, 190, 78, 0.16);
   animation: reviewGlow 2.2s ease-in-out infinite;
 }
@@ -333,7 +345,7 @@ body {
   padding: 34px;
   border: 1px solid rgba(255, 213, 128, 0.44);
   border-radius: 22px;
-  background: radial-gradient(circle at 78% 16%, rgba(237, 53, 105, 0.32), transparent 32%), linear-gradient(145deg, #211052, #4c186f 58%, #10295c);
+  background: radial-gradient(circle at 78% 16%, rgba(39, 189, 190, 0.2), transparent 32%), linear-gradient(145deg, #06162f, #073b72 58%, #0b2854);
   box-shadow: 0 34px 90px rgba(3, 2, 20, 0.65), inset 0 1px rgba(255, 255, 255, 0.13);
   transform: translate(-50%, -46%);
   transition: transform 320ms cubic-bezier(.2,.75,.25,1);
@@ -384,9 +396,9 @@ body {
   bottom: 58px;
   width: min(350px, calc(100vw - 24px));
   padding: 13px;
-  border: 1px solid rgba(198,163,255,.34);
+  border: 1px solid rgba(141,205,255,.34);
   border-radius: 16px;
-  background: rgba(22, 13, 57, .97);
+  background: rgba(5, 27, 60, .98);
   box-shadow: 0 24px 60px rgba(5,2,20,.5);
   transform: translateY(8px);
   transition: 200ms ease;
@@ -411,10 +423,13 @@ body {
 .made-bag-total { display: flex; justify-content: space-between; padding: 16px 0; }
 
 @media (max-width: 700px) {
-  body { background: linear-gradient(180deg, #1d174f 0%, #005baa 18%, #243a88 67%, #35115f 100%); }
+  body { background: linear-gradient(180deg, #08152f 0%, #005baa 18%, #123d78 67%, #071b3b 100%); }
   .category-nav { top: 6px; display: flex; overflow-x: auto; border-radius: 13px; scrollbar-width: none; }
   .category-nav::-webkit-scrollbar { display: none; }
-  .category-nav a { flex: 0 0 auto; min-width: 112px; }
+  .category-nav a { flex: 0 0 auto; grid-template-columns: 30px auto; min-width: 102px; min-height: 44px; padding: 4px 7px; }
+  .category-nav a i { display: none; }
+  .category-nav img { width: 30px; height: 30px; }
+  .category-nav b { font-size: 10px; }
   .paris-card { padding: 28px 22px; }
   .paris-card h2 { font-size: 46px; }
   .bag-maker { right: max(9px, env(safe-area-inset-right)); bottom: max(9px, env(safe-area-inset-bottom)); }
