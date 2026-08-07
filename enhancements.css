@@ -38,24 +38,31 @@
 }
 
 .hero-controls {
-  gap: 4px;
-  padding: 3px;
-  border-radius: 11px;
+  gap: 3px;
+  padding: 2px;
+  border-color: rgba(255, 255, 255, 0.14);
+  border-radius: 9px;
+  background: rgba(4, 36, 76, 0.78);
+  box-shadow: 0 4px 12px rgba(0, 18, 48, 0.14);
+  backdrop-filter: none;
 }
 
 .hero-controls button {
   position: relative;
-  width: 32px;
-  min-width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  font-size: 18px;
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  border-color: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.055);
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .hero-controls button::after {
   content: "";
   position: absolute;
-  inset: -6px;
+  inset: -10px;
 }
 
 .hero-controls button:hover,
@@ -118,11 +125,11 @@
   }
 
   .hero-controls button {
-    width: 32px;
-    min-width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    font-size: 18px;
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    font-size: 14px;
   }
 
   .feature-slider-controls.is-manual {
