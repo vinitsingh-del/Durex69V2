@@ -1,0 +1,112 @@
+/* Compact, user-controlled carousel navigation. */
+.hero-controls,
+.hero-products-head > div,
+.feature-slider-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-controls,
+.hero-products-head > div,
+.feature-slider-controls.is-manual {
+  width: max-content;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  background: rgba(4, 48, 100, 0.72);
+  box-shadow: 0 8px 22px rgba(0, 26, 72, 0.18);
+  backdrop-filter: blur(10px);
+}
+
+.hero-controls button,
+.hero-products-head button,
+.feature-slider-controls > button {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff7e6;
+  font: 700 24px/1 Arial, sans-serif;
+  cursor: pointer;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.hero-controls button:hover,
+.hero-products-head button:hover,
+.feature-slider-controls > button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.52);
+  background: rgba(255, 255, 255, 0.17);
+}
+
+.hero-controls button:focus-visible,
+.hero-products-head button:focus-visible,
+.feature-slider-controls > button:focus-visible {
+  outline: 2px solid #55e6e5;
+  outline-offset: 2px;
+}
+
+.feature-slider-controls.is-manual > div,
+.feature-slider-controls.is-manual > button[aria-label*="Pause"] {
+  display: none !important;
+}
+
+.feature-slider-controls.is-manual {
+  justify-content: flex-start;
+  margin-top: 18px;
+}
+
+.feature-copy,
+.feature-visual img,
+.hero-photo {
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.massager-feature.is-changing .feature-copy,
+.massager-feature.is-changing .feature-visual img {
+  opacity: 0.55;
+  transform: translateY(3px);
+}
+
+@media (max-width: 700px) {
+  .hero-controls {
+    top: 14px;
+    right: 14px;
+    bottom: auto;
+    left: auto;
+  }
+
+  .hero-products-head > div {
+    flex: 0 0 auto;
+  }
+
+  .hero-controls button,
+  .hero-products-head button,
+  .feature-slider-controls > button {
+    width: 38px;
+    min-width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    font-size: 22px;
+  }
+
+  .feature-slider-controls.is-manual {
+    margin-top: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-copy,
+  .feature-visual img,
+  .hero-photo,
+  .hero-product-rail {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
