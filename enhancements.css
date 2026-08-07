@@ -1,4 +1,9 @@
 /* Compact, user-controlled carousel navigation. */
+:root {
+  --yellow: #ffed5c;
+  --brand-yellow: #ffed5c;
+}
+
 .hero-controls,
 .hero-products-head > div,
 .feature-slider-controls {
@@ -363,7 +368,7 @@ body {
 .paris-kicker { display: block; color: #75e1e2; letter-spacing: .2em; font-size: 10px; }
 .paris-card h2 { margin: 12px 0; text-transform: uppercase; font: 900 54px/.82 OneNightHead; }
 .paris-card p { max-width: 340px; color: #ccd5e3; font: 16px/1.45 OneNightCond; }
-.paris-card > a { display: flex; justify-content: space-between; align-items: center; min-height: 48px; margin-top: 20px; padding: 0 14px 0 17px; border-radius: 10px; background: #faa61a; color: #09051d; font-size: 12px; }
+.paris-card > a { display: flex; justify-content: space-between; align-items: center; min-height: 48px; margin-top: 20px; padding: 0 14px 0 17px; border-radius: 10px; background: var(--brand-yellow); color: #09051d; font-size: 12px; }
 .paris-card > a b { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 7px; background: rgba(0,0,0,.12); }
 .paris-card > small { display: block; margin-top: 11px; color: #9faac0; font: 11px OneNightCond; }
 .paris-close { position: absolute; top: 12px; right: 12px; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.22); border-radius: 50%; background: rgba(9,5,29,.44); color: #fff; font-size: 24px; }
@@ -384,7 +389,7 @@ body {
   padding: 5px 7px 5px 12px;
   border: 1px solid rgba(255,255,255,.46);
   border-radius: 24px;
-  background: linear-gradient(120deg, #faa61a, #ffbf48);
+  background: var(--brand-yellow);
   color: #09051d;
   box-shadow: 0 14px 34px rgba(8,3,28,.4);
   font-size: 12px;
@@ -422,7 +427,7 @@ body {
 .bag-maker-tray article span { display: grid; gap: 3px; }
 .bag-maker-tray article b { font-size: 11px; }
 .bag-maker-tray article small { color: #b7c3d5; font: 12px OneNightCond; }
-.bag-maker-tray article button { min-height: 38px; border: 0; border-radius: 8px; padding: 0 10px; background: #faa61a; color: #09051d; font-size: 10px; }
+.bag-maker-tray article button { min-height: 38px; border: 0; border-radius: 8px; padding: 0 10px; background: var(--brand-yellow); color: #09051d; font-size: 10px; }
 .made-bag-item { display: grid; grid-template-columns: 62px 1fr; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
 .made-bag-item img { object-fit: contain; width: 58px; height: 58px; padding: 5px; border-radius: 9px; background: #fff; }
 .made-bag-item span { display: grid; gap: 4px; }
