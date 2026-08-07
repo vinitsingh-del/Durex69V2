@@ -6,6 +6,12 @@
     const slides = [...document.querySelectorAll('.hero-photo')];
     if (!hero || slides.length < 2) return;
 
+    const heldProduct = document.createElement('span');
+    heldProduct.className = 'hero-held-product';
+    heldProduct.setAttribute('aria-hidden', 'true');
+    heldProduct.innerHTML = '<img src="/Durex69V2/assets/live-range/extra-time-ultra-thin-10-stable.webp" alt="">';
+    hero.querySelector('.hero-slides')?.append(heldProduct);
+
     let index = Math.max(0, slides.findIndex((slide) => slide.classList.contains('is-active')));
     const show = (next) => {
       index = (next + slides.length) % slides.length;
@@ -14,7 +20,10 @@
         slide.classList.toggle('is-active', active);
         slide.setAttribute('aria-hidden', String(!active));
       });
+      heldProduct.classList.toggle('is-visible', index === 1);
     };
+
+    show(index);
 
     byLabel(hero, 'Previous banner')?.addEventListener('click', () => show(index - 1));
     byLabel(hero, 'Next banner')?.addEventListener('click', () => show(index + 1));
