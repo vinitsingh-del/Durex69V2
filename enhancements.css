@@ -150,7 +150,7 @@
   aspect-ratio: 0.51;
   position: absolute;
   top: 69.2%;
-  left: 53.7%;
+  left: 67.4%;
   overflow: hidden;
   transform: translate(-50%, -50%);
   border-radius: 3px;
@@ -217,7 +217,7 @@
   .hero-held-product {
     width: clamp(34px, 10.5vw, 43px);
     top: 69.2%;
-    left: 53.7%;
+    left: 67.4%;
   }
 }
 
