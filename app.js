@@ -22,6 +22,97 @@
     byLabel(hero, 'Next banner')?.addEventListener('click', () => show(index + 1));
   };
 
+  const setupPreloader = () => {
+    const preloader = document.querySelector('.preloader');
+    if (!preloader) return;
+    window.setTimeout(() => preloader.classList.add('is-complete'), 900);
+  };
+
+  const setupParisContest = () => {
+    const modal = document.createElement('div');
+    modal.className = 'paris-modal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'paris-title');
+    modal.innerHTML = `
+      <button class="paris-backdrop" aria-label="Close Paris contest"></button>
+      <section class="paris-card">
+        <button class="paris-close" aria-label="Close Paris contest">×</button>
+        <span class="paris-kicker">69 STORE PRESENTS</span>
+        <i aria-hidden="true">✦</i>
+        <h2 id="paris-title">Paris<br>after dark</h2>
+        <p>Shop the 69 Store and enter for a chance to make your next romantic escape unforgettable.</p>
+        <a href="#bestsellers">Enter the Paris contest <b>→</b></a>
+        <small>Terms and eligibility apply.</small>
+      </section>`;
+    document.body.append(modal);
+    const close = () => modal.classList.remove('is-open');
+    modal.querySelectorAll('[aria-label="Close Paris contest"]').forEach((button) => button.addEventListener('click', close));
+    modal.querySelector('a')?.addEventListener('click', close);
+    document.addEventListener('keydown', (event) => event.key === 'Escape' && close());
+    window.setTimeout(() => modal.classList.add('is-open'), 1450);
+  };
+
+  const setupBagMaker = () => {
+    const products = [
+      { name: 'Extra Time Ultra Thin', price: 349, image: '/Durex69V2/assets/live-range/extra-time-ultra-thin-10-stable.webp' },
+      { name: 'Real Feel Lube', price: 349, image: '/Durex69V2/assets/live-range/Real_Feel_62de3020-dba5-4359-999e-05ccaad591c9.webp' },
+      { name: 'Ride & Vibe', price: 4199, image: '/Durex69V2/assets/live-range/ride-vibe-men-stable.webp' }
+    ];
+    const items = [];
+    const maker = document.createElement('aside');
+    maker.className = 'bag-maker';
+    maker.innerHTML = `
+      <button class="bag-maker-trigger" aria-expanded="false"><span>＋</span> Make Your Bag <b>0</b></button>
+      <section class="bag-maker-tray" aria-label="Quick bag builder">
+        <header><span><small>QUICK PICKS</small><strong>Make your bag</strong></span><button aria-label="Close quick bag builder">×</button></header>
+        <div>${products.map((product, index) => `<article><img src="${product.image}" alt=""><span><b>${product.name}</b><small>₹${product.price.toLocaleString('en-IN')}</small></span><button data-product="${index}">Add ＋</button></article>`).join('')}</div>
+      </section>`;
+    document.body.append(maker);
+
+    const trigger = maker.querySelector('.bag-maker-trigger');
+    const tray = maker.querySelector('.bag-maker-tray');
+    const setOpen = (open) => {
+      maker.classList.toggle('is-open', open);
+      trigger.setAttribute('aria-expanded', String(open));
+    };
+    trigger.addEventListener('click', () => setOpen(!maker.classList.contains('is-open')));
+    maker.querySelector('[aria-label="Close quick bag builder"]')?.addEventListener('click', () => setOpen(false));
+
+    const renderBag = () => {
+      const total = items.reduce((sum, item) => sum + item.price, 0);
+      document.querySelectorAll('.bag b, .bag-maker-trigger b').forEach((count) => count.textContent = String(items.length));
+      const drawer = document.querySelector('.cart-drawer');
+      const cartItems = drawer?.querySelector('.cart-items');
+      const title = drawer?.querySelector('#bag-title');
+      if (title) title.textContent = items.length ? `${items.length} item${items.length === 1 ? '' : 's'} in your bag` : 'Your bag is empty';
+      if (cartItems && items.length) cartItems.innerHTML = `${items.map((item) => `<article class="made-bag-item"><img src="${item.image}" alt=""><span><b>${item.name}</b><small>₹${item.price.toLocaleString('en-IN')}</small></span></article>`).join('')}<div class="made-bag-total"><span>Total</span><b>₹${total.toLocaleString('en-IN')}</b></div>`;
+    };
+    const add = (product) => {
+      items.push(product);
+      renderBag();
+      trigger.classList.remove('is-pulsing');
+      void trigger.offsetWidth;
+      trigger.classList.add('is-pulsing');
+    };
+    maker.querySelectorAll('[data-product]').forEach((button) => button.addEventListener('click', () => add(products[Number(button.dataset.product)])));
+    document.querySelectorAll('.product-card .quick-add').forEach((button) => button.addEventListener('click', () => {
+      const card = button.closest('.product-card');
+      const name = card?.querySelector('h3')?.textContent.trim() || 'Durex product';
+      const priceText = card?.querySelector('.price b')?.textContent.replace(/[^0-9]/g, '') || '0';
+      const image = card?.querySelector('.product-media-main')?.src || products[0].image;
+      add({ name, price: Number(priceText), image });
+    }));
+
+    const drawer = document.querySelector('.cart-drawer');
+    const backdrop = document.querySelector('.cart-backdrop');
+    const openDrawer = () => { drawer?.classList.add('is-open'); backdrop?.classList.add('is-open'); drawer?.setAttribute('aria-hidden', 'false'); };
+    const closeDrawer = () => { drawer?.classList.remove('is-open'); backdrop?.classList.remove('is-open'); drawer?.setAttribute('aria-hidden', 'true'); };
+    document.querySelector('.bag')?.addEventListener('click', openDrawer);
+    drawer?.querySelector('[aria-label="Close bag"]')?.addEventListener('click', closeDrawer);
+    backdrop?.addEventListener('click', closeDrawer);
+  };
+
   const setupSaleRail = () => {
     const rail = document.querySelector('.hero-product-rail');
     if (!rail) return;
@@ -84,7 +175,10 @@
     byLabel(controls, 'Next featured massager')?.addEventListener('click', () => render(index + 1));
   };
 
+  setupPreloader();
   setupHero();
   setupSaleRail();
   setupFeaturedMassagers();
+  setupParisContest();
+  setupBagMaker();
 })();
